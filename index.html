@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<script>document.documentElement.classList.add("js");</script>
+<title>Mayura Datar — AI Learning Experience Designer</title>
+<meta name="author" content="Mayura Datar">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mayura Datar — AI Learning Experience Designer">
+<meta property="og:description" content="Mayura Datar designs AI agents for learning experiences in Microsoft 365 Copilot.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="description" content="Mayura Datar designs AI agents for learning experiences in Microsoft 365 Copilot.">
+<style>
+@font-face{font-family:"Gentium Book";src:url(assets/fonts/font-1.woff) format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Gentium Book";src:url(assets/fonts/font-2.woff) format("woff");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Gentium Book";src:url(assets/fonts/font-3.woff) format("woff");font-weight:400;font-style:italic;font-display:swap}
+
+:root{
+  --paper:#fdfcf9;
+  --ink:#151515;
+  --ink-soft:#4a4a4a;
+  --line:#e6e1d8;
+  --accent:#e9963a;
+  --accent-soft:#fbeedd;
+  --serif:"Gentium Book","Gelasio","Georgia","Times New Roman",serif;
+  --sans:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --measure:40rem;
+}
+@media (prefers-color-scheme: dark){:root{--paper:#fdfcf9;--ink:#151515}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.125rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-inline-size:100%;display:block}
+
+/* ---------- Top bar ---------- */
+/* Header is fixed to the top on every screen size (more reliable than sticky on mobile browsers).
+   A solid colour comes first so older phones that don't support color-mix still get a background. */
+.topbar{position:relative;flex:none;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem clamp(1.25rem,4vw,3.5rem);background:rgba(253,252,249,.94);background:color-mix(in srgb,var(--paper) 92%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-block-end:1px solid var(--line);box-sizing:border-box}
+/* The page content scrolls inside .scroller while the header sits above it.
+   This keeps the header visible on iPhone, including in file previews where fixed/sticky headers scroll away. */
+html,body{block-size:100%}
+body{display:flex;flex-direction:column;overflow:hidden}
+.scroller{flex:1 1 auto;min-block-size:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;scroll-behavior:smooth}
+.monogram{font-family:var(--serif);font-weight:700;font-size:1.15rem;text-decoration:none;letter-spacing:.02em}
+.monogram span{color:var(--accent)}
+.nav{display:flex;align-items:center;gap:clamp(.75rem,2vw,1.75rem);font-family:var(--sans);font-size:.9rem}
+.nav a{text-decoration:none;color:var(--ink-soft)}
+.nav a:hover,.nav a:focus-visible{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+.icon-link{display:inline-flex;align-items:center;gap:.4rem}
+.icon-link svg{inline-size:1.05rem;block-size:1.05rem;fill:currentColor}
+
+/* ---------- Hero ---------- */
+.hero{min-block-size:calc(100vh - 3.5rem);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:center;gap:clamp(1.5rem,4vw,4rem);padding:clamp(1rem,3vw,2.5rem) clamp(1.25rem,4vw,3.5rem) clamp(2rem,5vw,4rem)}
+.hero-art img{inline-size:100%;block-size:auto;max-block-size:82vh;object-fit:contain;margin-inline:auto;mix-blend-mode:multiply}
+.hero-copy{max-inline-size:30rem}
+.hello{margin:0 0 .4rem;margin-inline-start:2.2rem;line-height:0}.hello img{inline-size:clamp(13rem,24vw,22rem);block-size:auto}
+.name{font-family:var(--serif);font-weight:700;font-size:clamp(2.6rem,5vw,4.4rem);line-height:1.05;margin:0 0 1.5rem}
+.role{font-family:var(--sans);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin:-.75rem 0 1.5rem}
+.lede{font-size:clamp(1.1rem,1.5vw,1.3rem);line-height:1.55;margin:0}
+.lede a{text-decoration-thickness:1.5px;text-underline-offset:4px}
+.lede a:hover{color:var(--accent)}
+.hero-links{display:flex;flex-wrap:wrap;gap:.75rem;margin-block-start:2rem;font-family:var(--sans);font-size:.9rem}
+.pill{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1rem;border:1.5px solid var(--ink);border-radius:999px;text-decoration:none;transition:background .2s,color .2s}
+.pill svg{inline-size:1rem;block-size:1rem;fill:currentColor}
+.pill:hover,.pill:focus-visible{background:var(--ink);color:var(--paper)}
+button.pill{font:inherit;font-family:var(--sans);font-size:.9rem;background:transparent;color:var(--ink);cursor:pointer}
+.scroll-cue{display:inline-block;margin-block-start:2.5rem;font-family:var(--sans);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none}
+.scroll-cue::after{content:"";display:block;inline-size:1px;block-size:2.5rem;background:var(--ink-soft);margin:.6rem 0 0 1.2rem;animation:drip 2s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- Story ---------- */
+.section{padding:clamp(3rem,8vw,6rem) clamp(1.25rem,4vw,3.5rem)}
+.wrap{max-inline-size:var(--measure);margin-inline:auto}
+.eyebrow{font-family:var(--sans);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 .75rem}
+h2{font-weight:700;font-size:clamp(2rem,4vw,2.8rem);line-height:1.15;margin:0 0 2rem}
+.story p{margin:0 0 1.4em}
+.pull a{text-decoration-thickness:1.5px;text-underline-offset:5px}.pull a:hover{color:var(--accent)}
+.pull{font-size:clamp(1.5rem,3vw,2rem);line-height:1.3;font-style:italic;border-inline-start:3px solid var(--accent);padding-inline-start:1.25rem;margin:2.5rem 0}
+.diagram{display:grid;place-items:center;min-block-size:14rem;margin:2.5rem 0;border:1.5px dashed #cfc7b8;border-radius:16px;background:var(--accent-soft);color:var(--ink-soft);font-family:var(--sans);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:1.5rem}
+.tbc{font-family:var(--sans);font-size:.85rem;color:var(--ink-soft);font-style:normal}
+
+
+/* ---------- Scroll-linked work stacks (first paragraph) ---------- */
+:root{--bar:3.75rem}
+.topbar{block-size:var(--bar)}
+/* ---------- Two-column pages (What I do, Work): text left, images right ---------- */
+.split{max-inline-size:76rem;margin-inline:auto}
+.split-head{max-inline-size:var(--measure)}
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,5vw,4.5rem);align-items:center;padding-block:clamp(1.5rem,3vw,2.5rem)}
+.row-text p{margin:0}
+.row-text p + p{margin-block-start:1.2em}
+.art{inline-size:100%;block-size:auto;display:block}
+/* remove the white fill so drawings sit on the page colour; 24px corners */
+.art.blend{mix-blend-mode:multiply;border-radius:24px}
+.story a{text-decoration-thickness:1.5px;text-underline-offset:4px}.story a:hover{color:var(--accent)}
+
+/* Work stacks: 2 x 2 in the column; 4 in a row when there is room */
+.rail{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:clamp(2rem,5vw,4.5rem);row-gap:1.25rem;align-items:end;padding-block:clamp(1rem,2vw,1.5rem)}
+/* keep 2 stacks per text column: tighter gap inside each pair */
+.rail .work-fig:nth-child(odd){margin-inline-end:calc(clamp(2rem,5vw,4.5rem) * -0.5)}
+.rail .work-fig:nth-child(even){margin-inline-start:calc(clamp(2rem,5vw,4.5rem) * -0.5)}
+/* 2 x 2 when the column is too narrow for four */
+.work-fig{display:block;inline-size:80%;justify-self:center;text-decoration:none;color:inherit;text-align:center}
+.work-fig img{inline-size:100%;block-size:auto;margin-inline:auto;transition:transform .35s ease}
+.work-fig:hover img,.work-fig:focus-visible img{transform:translateY(-6px) rotate(-1deg)}
+.fig-cap{display:block;margin-block-start:.25rem;font-family:var(--sans);font-size:.8rem;line-height:1.35;color:var(--ink-soft)}
+.work-fig:hover .fig-cap,.work-fig:focus-visible .fig-cap{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
+/* Before / now loop */
+
+/* Process diagram under the last paragraph */
+.row-last{border-block-end:0}
+.process{margin:0}
+.process img{inline-size:100%;block-size:auto}
+.process figcaption{margin-block-start:.75rem;font-family:var(--sans);font-size:.9rem;color:var(--ink-soft);text-align:center;font-style:italic}
+
+/* Single column on tablets and phones: text first, image under it */
+@media (max-width:900px){
+  .row{grid-template-columns:1fr;gap:1.5rem}
+}
+@media (max-width:560px){.rail{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:1rem}.rail .work-fig{margin-inline:0!important}}
+
+/* ---------- Work gallery: looping slideshows ---------- */
+.wrap.wide{max-inline-size:54.4rem}
+.work .split{max-inline-size:76rem}
+.track{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(2rem,5vw,4.5rem);align-items:center;padding-block:clamp(2rem,4vw,3rem);scroll-margin-block-start:0}
+.track-desc{margin:0;color:var(--ink-soft);font-size:1.02rem;line-height:1.6}
+.track-desc a{color:var(--ink);text-decoration-thickness:1.5px;text-underline-offset:4px}.track-desc a:hover{color:var(--accent)}
+.track-prod{font-weight:400;color:var(--ink-soft)}
+.show.tall{max-inline-size:26rem;justify-self:center;inline-size:100%}
+@media (max-width:900px){.track{grid-template-columns:1fr;gap:1.25rem}}
+.track-num{font-family:var(--sans);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 .3rem}
+.track h3{font-size:clamp(1.35rem,2.4vw,1.75rem);line-height:1.25;margin:0 0 .75rem}
+.show{position:relative;margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#f3f1ec;transition:box-shadow .6s ease}
+.track:target .show{animation:flash 2.2s ease}
+@keyframes flash{0%,40%{box-shadow:0 0 0 10px var(--accent-soft)}100%{box-shadow:0 0 0 10px transparent}}
+.slides{position:relative;aspect-ratio:var(--ratio,16/9);cursor:zoom-in}
+.slide{position:absolute;inset:0;inline-size:100%;block-size:100%;object-fit:contain;opacity:0;transition:opacity .4s ease}
+.slide.on{opacity:1}
+.show-line{display:flex;align-items:center;gap:.75rem;margin:0;padding:.7rem 1rem;border-block-start:1px solid var(--line);background:var(--paper);font-family:var(--sans);font-size:.9rem;color:var(--ink-soft);white-space:nowrap}
+.show-line .txt{overflow:hidden;text-overflow:ellipsis;flex:1}
+.show-line .count{font-variant-numeric:tabular-nums;font-size:.8rem;color:var(--ink-soft)}
+.show-line .state{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600;opacity:0;transition:opacity .2s}
+.show.paused .show-line .state{opacity:1}
+/* Chevrons: only while a slideshow is paused (mouse hover / keyboard) or full screen */
+.chev{position:absolute;inset-block-start:50%;transform:translateY(-50%);z-index:2;display:grid;place-items:center;inline-size:2.5rem;block-size:2.5rem;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.72);color:var(--ink);box-shadow:0 1px 6px rgba(0,0,0,.18);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s ease,background .2s ease}
+.chev svg{inline-size:1.1rem;block-size:1.1rem;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.chev:hover,.chev:focus-visible{background:rgba(255,255,255,.95)}
+.chev.prev{inset-inline-start:.75rem}.chev.next{inset-inline-end:.75rem}
+.show.paused .chev:not([hidden]),.lightbox .chev:not([hidden]){opacity:1;pointer-events:auto}
+.chev[hidden]{display:grid;opacity:0!important;pointer-events:none!important}
+.lb-stage{position:relative}
+.lightbox{max-inline-size:min(96vw,1500px);max-block-size:94vh;padding:0;border:0;border-radius:12px;background:var(--paper);overflow:auto}
+.lightbox::backdrop{background:rgba(15,15,15,.82)}
+.lightbox img{inline-size:100%;block-size:auto;display:block}
+.lb-cap{margin:0;padding:.75rem 1rem;font-family:var(--sans);font-size:.9rem;color:var(--ink-soft)}
+.lb-close{position:absolute;inset-block-start:.75rem;inset-inline-end:.75rem;box-shadow:0 2px 10px rgba(0,0,0,.3);inline-size:2.5rem;block-size:2.5rem;border-radius:50%;border:0;background:var(--ink);color:var(--paper);font-size:1.5rem;line-height:1;cursor:pointer;z-index:1}
+
+/* ---------- Pages ---------- */
+.js .page{display:none}
+.js .page.active{display:block}
+.js .page > .section:first-child{border-block-start:0}
+.nav a[aria-current="page"]{color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:6px}
+.story{scroll-margin-block-start:0}
+.track,.story,#work,#resume,#about,#contact{scroll-margin-block-start:0}
+
+/* ---------- About me ---------- */
+.about-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,3.5rem);align-items:center}
+.about-link{display:block;justify-self:center;max-inline-size:508px;inline-size:100%;transition:transform .3s ease,box-shadow .3s ease}
+.about-link:hover,.about-link:focus-visible{transform:translateY(-4px);box-shadow:0 16px 30px -16px rgba(0,0,0,.45)}
+.about-art{inline-size:100%;block-size:auto;display:block}
+.about-text{font-size:clamp(1.15rem,1.6vw,1.35rem);line-height:1.6;margin:0}
+.about-gif{inline-size:100%;block-size:auto;margin-block-start:.75rem;mix-blend-mode:multiply}
+@media (max-width:760px){.about-grid{grid-template-columns:1fr}}
+
+/* ---------- Resume ---------- */
+.resume .wrap{max-inline-size:48rem}
+.resume-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:1rem;margin-block-end:2rem}
+.resume-head h2{margin:0}
+.summary{font-size:1.2rem;margin:0 0 2.5rem}
+.block-title{font-family:var(--sans);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin:2.75rem 0 1.25rem;padding-block-end:.5rem;border-block-end:1px solid var(--line)}
+.job{margin-block-end:1.75rem}
+.job-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.25rem .9rem}
+.job-head h3{font-size:1.45rem;margin:0}
+.meta{font-family:var(--sans);font-size:.9rem;color:var(--ink-soft)}
+.job ul{margin:.6rem 0 0;padding-inline-start:1.2rem}
+.job li{margin-block-end:.45rem}
+.job p{margin:.4rem 0 0}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.5rem 2.5rem}
+.skills h4{font-size:1.05rem;margin:0 0 .3rem}
+.skills p{margin:0;font-family:var(--sans);font-size:.95rem;color:var(--ink-soft);line-height:1.6}
+
+/* ---------- Footer ---------- */
+.footer{display:flex;flex-direction:column;align-items:center;gap:48px;padding:clamp(3rem,7vw,5rem) clamp(1.25rem,4vw,3.5rem);background:var(--ink);color:var(--paper);text-align:center}
+.footer .script{font-family:var(--serif);font-style:italic;font-size:clamp(2.75rem,6vw,4.5rem);line-height:1.1;margin:0 0 .5rem}
+.footer p{margin:0;color:#cfcac0}
+.footer .hero-links{justify-content:center;margin:0}
+.footer .pill{border-color:var(--paper)}
+.footer .pill:hover,.footer .pill:focus-visible{background:var(--paper);color:var(--ink)}
+.footer .fine{margin:0;font-family:var(--sans);font-size:.78rem;color:#8d887f}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px){
+  .hero{grid-template-columns:1fr;min-block-size:auto;text-align:start}
+  .hero-art{order:0}
+  .hero-copy{max-inline-size:none}
+  .hello{margin-inline-start:0}
+  .nav .hide-sm{display:none}
+  .nav{gap:.6rem;font-size:.8rem}
+  .nav a{white-space:nowrap}
+  .topbar{padding-inline:1rem}
+}
+@media (max-width:480px){
+  .nav .icon-link{display:none}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.scroll-cue::after{animation:none}}
+/* Printing (or "Save as PDF") outputs just the resume */
+@media print{
+  html,body{block-size:auto;overflow:visible;display:block}
+  .scroller{overflow:visible}
+  @page{margin:10mm 14mm}
+  body{background:#fff;font-size:10pt;line-height:1.35}
+  .topbar,.hero,.story,.work,.about,.lightbox,.footer,#save-pdf,.resume .eyebrow{display:none!important}
+  .js .page#page-resume{display:block!important}
+  .section{padding:0;border:0}
+  .resume .wrap{max-inline-size:none}
+  .resume-head{margin-block-end:.6rem}
+  h2{font-size:24pt;margin:0}
+  .summary{font-size:11pt;margin-block-end:1rem}
+  .block-title{margin:.8rem 0 .45rem;font-size:8pt}
+  .job{margin-block-end:.5rem;break-inside:avoid}
+  .job-head h3{font-size:13pt}
+  .job li{margin-block-end:.2rem}
+  .skills{grid-template-columns:1fr 1fr;gap:.35rem 1.5rem}
+  .skills p{font-size:9.5pt}
+  a{text-decoration:none}
+}
+
+/* ---------- Work: "Read more" case studies ---------- */
+.work-intro{max-inline-size:var(--measure);margin:-1rem 0 1.5rem}
+.more-toggle{display:inline-flex;align-items:center;gap:.5rem;margin-block-start:1.25rem;padding:.45rem 1rem;border:1px solid var(--ink);border-radius:999px;background:transparent;font-family:var(--sans);font-size:.9rem;color:var(--ink);cursor:pointer;transition:background-color .2s ease}
+.more-toggle:hover{background:var(--accent-soft)}
+.more-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.more-chev{display:inline-block;inline-size:.5rem;block-size:.5rem;border-inline-end:1.5px solid currentColor;border-block-end:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .25s ease}
+.more-toggle[aria-expanded="true"] .more-chev,.more-chev.up{transform:translateY(2px) rotate(-135deg)}
+.more-toggle .less-label,.more-toggle[aria-expanded="true"] .more-label{display:none}
+.more-toggle[aria-expanded="true"] .less-label{display:inline}
+.more-toggle[data-less] .more-label{display:inline}
+html:not(.js) .more-toggle{display:none}
+.cs{grid-column:1/-1;margin-block-start:.5rem}
+.js .cs:not(.open){display:none}
+.cs.open{animation:more-in .35s ease}
+@keyframes more-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.cs-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(2rem,5vw,4.5rem);align-items:start;padding-block:clamp(1.5rem,3vw,2.25rem)}
+.cs-text{color:var(--ink-soft);font-size:1rem;line-height:1.65}
+.cs-text h4{font-family:var(--sans);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 .6rem}
+.cs-text p{margin:0 0 .8rem}
+.cs-text p:last-child{margin-block-end:0}
+.cs-text blockquote{margin:.25rem 0 1rem;padding:.2rem 0 .2rem 1rem;border-inline-start:3px solid var(--accent);font-style:italic;color:var(--ink);font-size:1.06rem}
+.cs-text .em-line{font-weight:600;color:var(--ink)}
+.cs-text a{color:var(--ink);text-underline-offset:4px}
+.cs-media{margin:0;position:sticky;inset-block-start:1rem}
+.cg{display:flex;flex-direction:column;gap:.75rem}
+.cg-row{display:flex;gap:.75rem;align-items:flex-start}
+.cg-item{position:relative;flex:var(--a) 1 0;min-inline-size:0;display:block;padding:0;border:0;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px var(--line);cursor:zoom-in;transition:box-shadow .2s ease,transform .2s ease}
+.cg-item:hover{box-shadow:0 0 0 1px var(--line),0 8px 24px rgba(0,0,0,.08)}
+.cg-item:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.cg-item img,.cg-item video{display:block;inline-size:100%;block-size:auto}
+.cg-play{position:absolute;inset-block-end:.6rem;inset-inline-end:.6rem;inline-size:2.25rem;block-size:2.25rem;border-radius:50%;background:rgba(21,21,21,.72);display:grid;place-items:center;pointer-events:none}
+.cg-play::after{content:"";margin-inline-start:3px;border-block:7px solid transparent;border-inline-start:11px solid #fff}
+.cs-cap{margin-block-start:.75rem;font-family:var(--sans);font-size:.88rem;line-height:1.5;color:var(--ink-soft);font-style:italic}
+.cs-end{padding-block:1.25rem clamp(2rem,4vw,3rem);border-block-end:1px solid var(--line)}
+.cs-end .more-toggle{margin:0}
+/* Future of Learning: video collage */
+.vgrid{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem 1rem}
+.vcell.pair{grid-column:1/-1}
+.vpair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.vtile{position:relative;display:block;inline-size:100%;aspect-ratio:1728/1080;padding:0;border:0;border-radius:10px;overflow:hidden;background:#f3f1ec;box-shadow:0 0 0 1px var(--line);cursor:pointer;transition:transform .25s ease,box-shadow .25s ease}
+.vtile img{inline-size:100%;block-size:100%;object-fit:contain;display:block}
+.vtile:hover{transform:translateY(-3px);box-shadow:0 0 0 1px var(--line),0 10px 26px rgba(0,0,0,.1)}
+.vtile:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.vnum{position:absolute;inset-block-start:.5rem;inset-inline-start:.5rem;padding:.15rem .5rem;border-radius:999px;background:rgba(253,252,249,.9);font-family:var(--sans);font-size:.72rem;color:var(--ink)}
+.vcap{margin:.55rem 0 0;font-family:var(--sans);font-size:.85rem;line-height:1.45;color:var(--ink-soft);font-style:italic}
+.vbox video[hidden]{display:none}
+.vbox video{display:block;inline-size:100%;max-block-size:calc(94vh - 4rem);background:#111}
+.vb-missing{margin:0;padding:4rem 1.5rem;text-align:center;font-family:var(--sans);color:var(--ink-soft);background:#f3f1ec}
+.track.no-media{grid-template-columns:minmax(0,1fr)}
+.track.no-media .track-text{max-inline-size:var(--measure)}
+.cs-media.vgrid{display:grid}
+.cs-media.vgrid.solo{grid-template-columns:1fr}
+@media (max-width:900px){.cs-row{grid-template-columns:1fr;gap:1.25rem}.cs-media{position:static}}
+@media (max-width:560px){.vgrid,.vpair{grid-template-columns:1fr}.cg-row.wrap-sm{flex-wrap:wrap}}
+@media (prefers-reduced-motion:reduce){.cs.open{animation:none}.more-chev,.vtile,.cg-item{transition:none}}
+/* What I do: three work stacks, evenly spaced */
+.rail{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:clamp(1.5rem,5vw,4.5rem);justify-items:center}
+.rail .work-fig,.rail .work-fig:nth-child(odd),.rail .work-fig:nth-child(even){margin-inline:0}
+.rail .work-fig{inline-size:80%}
+.rail-more{display:flex;justify-content:center;margin:.5rem 0 0}
+.rail-more .more-toggle{margin:0;text-decoration:none}
+.more-chev.right{transform:rotate(-45deg)}
+@media (max-width:560px){.rail{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:.75rem}.rail .work-fig{inline-size:100%}.fig-cap{font-size:.72rem}}
+</style>
+</head>
+<body>
+
+<!--
+  ==== EDIT YOUR LINKS HERE ====
+  Behance : https://www.behance.net/mayuradatar
+  YouTube : https://www.youtube.com/@mayurad7/videos
+  Email   : mailto:mayuradatar7@gmail.com
+  Search this file for each address to change it everywhere it appears.
+-->
+
+<header class="topbar">
+  <a class="monogram" href="#top" aria-label="Home">Mayura<span>.</span></a>
+  <nav class="nav" aria-label="Main">
+    <a href="#work" data-nav="work">Work</a>
+    <a href="#story" data-nav="home">What I do</a>
+    <a href="#resume" data-nav="resume">Resume</a>
+    <a href="#about" data-nav="about">About me</a>
+  </nav>
+</header>
+
+<div class="scroller" id="scroller">
+
+<main id="top">
+  <!-- =====================================================================
+       PAGES. Each <div class="page"> is shown on its own; the header links
+       switch between them (#about, #story, #work, #resume).
+       ===================================================================== -->
+
+  <!-- ===================== PAGE: HOME + WHAT I DO ===================== -->
+  <div class="page" id="page-home" data-page="home">
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-art">
+      <img src="assets/images/image-01.webp" width="1400" height="1012" alt="Hand-drawn illustration of Mayura riding a rocket around an orbit of her journey — NID, Cognizant, IDC IIT Bombay, an Adobe internship and Microsoft — with a photo of her in the centre saying Hi!">
+    </div>
+    <div class="hero-copy">
+      <h1 class="hello"><img src="assets/images/image-02.png" width="634" height="228" alt="Hello, I'm Mayura"></h1>
+      <p class="name" aria-hidden="true">I&rsquo;m Mayura</p>
+      <p class="lede">&hellip; and I&rsquo;m thrilled that you&rsquo;re here to read about my work. Much of it lives under NDAs, so I can&rsquo;t show everything, but I can tell you the story behind it. If you&rsquo;re short on time then <a href="#resume">click here to view my resume</a>.</p>
+      <div class="hero-links">
+        <a class="pill" href="https://www.behance.net/mayuradatar" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 11.3c.9-.4 1.5-1.2 1.5-2.4C9.7 6.6 8 6 6 6H0v12.2h6.2c2.3 0 4.4-1.1 4.4-3.6 0-1.6-.8-2.8-2.4-3.3zM2.8 8.1h2.6c1 0 1.9.3 1.9 1.4 0 1.1-.7 1.5-1.7 1.5H2.8V8.1zm2.9 7.9H2.8v-3.3h3c1.2 0 2 .5 2 1.8 0 1.3-1 1.5-2.1 1.5zM15.4 3.9h5.3v1.5h-5.3zM24 13.6c0-2.9-1.7-5.3-4.8-5.3-3 0-5 2.2-5 5.1 0 3 1.9 5.1 5 5.1 2.3 0 3.8-1 4.6-3.3h-2.4c-.3.8-1.3 1.3-2.1 1.3-1.6 0-2.4-.9-2.4-2.4H24v-.5zm-7.2-1.2c.1-1.2.9-2 2.2-2 1.2 0 1.8.7 1.9 2h-4.1z"/></svg>Behance</a>
+        <a class="pill" href="https://www.youtube.com/@mayurad7/videos" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>YouTube</a>
+      </div>
+      <a class="scroll-cue" href="#story">Scroll</a>
+    </div>
+  </section>
+
+  <!-- ===================== NARRATIVE (scroll experience to be designed later) ===================== -->
+  <section class="section story" id="story">
+    <div class="split">
+      <div class="split-head">
+        <p class="eyebrow">What I do</p>
+        <h2>Conversation Experience Design</h2>
+      </div>
+
+      <!-- Before | Now -->
+      <div class="row">
+        <img loading="lazy" decoding="async" class="art blend" src="assets/images/image-03.webp" width="1021" height="496" alt="Before: a busy visual interface crowded with buttons, images and placeholder text">
+        <img loading="lazy" decoding="async" class="art blend" src="assets/images/image-04.webp" width="1021" height="496" alt="Now: a simple chat window saying Hi! Hello! How can I help? while interface elements wait in the wings">
+      </div>
+
+      <!-- Para 1 | double diamond -->
+      <div class="row">
+        <div class="row-text">
+          <p>I design agentic experiences for enterprise learning in Microsoft 365 Copilot. In traditional design mockups/ wireframes, visuals took their seats first; text fitted into the space left for it. Now, until we find a better way to interact with agents than natural language, text is king. Chat is the object of design. Conversation is the experience!</p>
+        </div>
+        <figure class="process">
+          <img loading="lazy" decoding="async" src="assets/images/image-05.webp" width="1227" height="413" alt="Diagram: User asks, then diverse responses evaluated using user study and research insights, converging on an ideal response; the dynamic product is monitored by automated tools, human in the loop and user feedback">
+          <figcaption>The double diamond, for letters and words instead of dots and lines!</figcaption>
+        </figure>
+      </div>
+
+      <!-- Para 2 | instructions -->
+      <div class="row">
+        <div class="row-text">
+          <p>We use natural language instructions to shape agent&rsquo;s role, tasks, personality and scope, giving it some autonomy while setting guardrails so the conversation doesn&rsquo;t go haywire. I&rsquo;ve tried to visualise the conversation design process in the double diamond&rsquo;s framework. We start with user queries, explore possible responses based on design principles, then use research and user feedback to converge on an ideal experience. Unlike traditional design products, the outcome and experience is dynamic in nature and hence measuring it is challenging. But we&rsquo;re augmenting the design process with similar dynamic tools like automated evaluations to monitor the dynamic responses. That being said, we cannot solely rely on automated tools and assessments happen by keeping human in the loop to ensure that the personalisation is not lost.</p>
+        </div>
+        <img loading="lazy" decoding="async" class="art blend" src="assets/images/image-06.webp" width="1021" height="496" alt="Illustration: an agent reads a long scroll of instructions and says, That question about x@#!... turn it down. It says here that we're not supposed to answer! But be respectful!">
+      </div>
+
+      <!-- Para 3 + Para 4 -->
+      <div class="row">
+        <div class="row-text">
+          <p>This design process is still new. As designers, we&rsquo;re good at adapting, and that skill will matter more than ever. The pace of evolving AI is blurring the boundaries between different disciplines. I&rsquo;ve embraced that shift by treating conversation as a design material. How is AI changing what you design&mdash;and where your role begins and ends? <a href="#contact">Let&rsquo;s chat!</a></p>
+          <p>Some of my projects have released worldwide. Do check them out!</p>
+        </div>
+      </div>
+
+      <!-- Work stacks: 2 in the left column, 2 in the right (click opens the track in Work) -->
+      <div class="rail">
+          <a class="work-fig" href="#work-content-camera">
+            <img loading="lazy" decoding="async" id="stack-content-camera" src="assets/images/image-07.webp" width="746" height="901" alt="Content camera in Microsoft Teams — stacked screens">
+            <span class="fig-cap">Content camera in Microsoft Teams</span>
+          </a>
+          <a class="work-fig" href="#work-admin">
+            <img loading="lazy" decoding="async" id="stack-admin" src="assets/images/image-08.webp" width="746" height="901" alt="Digital Academy curation for learning admins — stacked screens">
+            <span class="fig-cap">Digital Academy curation for learning admins</span>
+          </a>
+          <a class="work-fig" href="#work-autosave">
+            <img loading="lazy" decoding="async" id="stack-autosave" src="assets/images/image-10.webp" width="746" height="901" alt="Autosave in Digital Academy curation — stacked screens">
+            <span class="fig-cap">Autosave in Digital Academy curation</span>
+          </a>
+      </div>
+      <p class="rail-more"><a class="more-toggle" href="#work">Show more<span class="more-chev right" aria-hidden="true"></span></a></p>
+    </div>
+  </section>
+  </div>
+
+  <!-- ===================== PAGE: WORK ===================== -->
+  <div class="page" id="page-work" data-page="work">
+  <section class="section work" id="work">
+    <div class="split">
+      <h2>Work gallery</h2>
+      <p class="lede work-intro">Below are some case studies of the projects I&rsquo;ve worked on. They show more than finished UI: they reveal moments where I challenged assumptions, simplified complex systems, advocated for users, worked through legacy constraints and shaped product direction.</p>
+
+      <article class="track" id="work-assessments">
+        <div class="track-text">
+          <p class="track-num">Track 1</p>
+          <h3>Skill Assessments <span class="track-prod">| Learning Agent</span></h3>
+          <p class="track-desc">Personalised assessments in the Learning Agent that learners start themselves, based on what they want to learn. A rich, card-based preference selector was introduced so learners can tap instead of type. The idea behind it is that typing is also a currency, and every saved keystroke makes the experience easier.</p>
+          <button type="button" class="more-toggle" aria-controls="work-assessments-more" aria-expanded="false"><span class="more-label">Read more</span><span class="less-label">Read less</span><span class="more-chev" aria-hidden="true"></span></button>
+        </div>
+        <figure class="show" style="--ratio:1440/810">
+          <div class="slides" tabindex="0" role="button" aria-label="View current image full size">
+            <img loading="lazy" decoding="async" class="slide on" id="first-assessments" src="assets/images/image-11.webp" width="1440" height="810" alt="Skill Assessments in the Learning Agent — screen 1 of 3">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-12.webp" width="1440" height="810" alt="Skill Assessments in the Learning Agent — screen 2 of 3">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-13.webp" width="1440" height="810" alt="Skill Assessments in the Learning Agent — screen 3 of 3">
+          </div>
+          <figcaption class="show-line"><span class="txt">Skill Assessments — tap instead of type to set learning preferences</span><span class="state">Paused</span><span class="count"></span></figcaption>
+        </figure>
+        <div class="cs" id="work-assessments-more" role="region" aria-label="Case study details">
+        <!-- READ MORE CONTENT: work-assessments -->
+        <div class="cs-row">
+          <div class="cs-text">
+            <h4>Challenge</h4>
+            <p>At the beginning of 2026, there was a strong push towards building AI-first products. In learning, assessments felt like a natural opportunity: AI could generate assessments dynamically instead of relying on pre-authored, one-size-fits-all experiences.</p>
+            <p>For Learning Agent, we wanted to go a step further and make assessments personal to a learner&rsquo;s role, learning intent, available time and desired level of difficulty. Generating text-based assessments was relatively straightforward. The harder design problem was configuring them. Asking learners to communicate every preference through chat made a simple task unnecessarily laborious.</p>
+            <p>There was also an important enterprise requirement. For skills, compliance and organisation-specific knowledge, customers needed confidence that assessments could be grounded exclusively in their own trusted content.</p>
+          </div>
+          <figure class="cs-media">
+            <div class="cg">
+              <div class="cg-row"><button type="button" class="cg-item" style="--a:1.6590" aria-label="View full size: Early text-based assessment flow in the Learning Agent"><img loading="lazy" decoding="async" src="assets/images/cs-assess-0.webp" width="1440" height="868" alt="Early text-based assessment flow in the Learning Agent"></button></div>
+            </div>
+            <figcaption class="cs-cap"><span class="txt">Early text-based assessment flow required users to manually type every response, resulting in high cognitive load and effort.</span></figcaption>
+          </figure>
+        </div>
+        <div class="cs-row text-only">
+          <div class="cs-text">
+            <h4>My role</h4>
+            <p>I helped shape the end-to-end assessment experience, particularly how learners configure and start an assessment. I advocated for moving beyond the assumption that an agentic experience always needs to be text-driven.</p>
+            <p>My focus was to find the right interaction for the job: conversational when conversation adds value, and structured UI when it is simply faster and clearer.</p>
+          </div>
+          
+        </div>
+        <div class="cs-row">
+          <div class="cs-text">
+            <h4>Process</h4>
+            <p>We introduced rich preference and confirmation cards within the conversational experience. Instead of typing out instructions, learners could quickly choose the number of questions, time commitment and difficulty level.</p>
+            <p>This became an important design principle for us: <span class="em-line">the ideal agent experience isn&rsquo;t necessarily all chat. It is the right combination of conversation and UI.</span></p>
+            <p>We also designed assessments that could be generated solely from an organisation&rsquo;s approved content, giving learning administrators greater control over trust, relevance and compliance.</p>
+          </div>
+          <figure class="cs-media">
+            <div class="cg">
+              <div class="cg-row"><button type="button" class="cg-item" style="--a:1.7736" aria-label="View full size: Design iteration: assessment set-up inside the conversation"><img loading="lazy" decoding="async" src="assets/images/cs-assess-1.webp" width="3086" height="1740" alt="Design iteration: assessment set-up inside the conversation"></button><button type="button" class="cg-item" style="--a:1.4701" aria-label="View full size: Design iteration: interactive question card"><img loading="lazy" decoding="async" src="assets/images/cs-assess-2.webp" width="1326" height="902" alt="Design iteration: interactive question card"></button></div>
+              <div class="cg-row"><button type="button" class="cg-item" style="--a:1.7743" aria-label="View full size: Design iteration: confirmation card for a personalised learning plan"><img loading="lazy" decoding="async" src="assets/images/cs-assess-3.webp" width="2814" height="1586" alt="Design iteration: confirmation card for a personalised learning plan"></button><button type="button" class="cg-item" style="--a:1.7743" aria-label="View full size: Design iteration: card for choosing assessment depth and difficulty"><img loading="lazy" decoding="async" src="assets/images/cs-assess-5.webp" width="2814" height="1586" alt="Design iteration: card for choosing assessment depth and difficulty"></button></div>
+            </div>
+            <figcaption class="cs-cap"><span class="txt">Iterative design screens showing the introduction of rich, interactive confirmation cards within the conversational interface.</span></figcaption>
+          </figure>
+        </div>
+        <div class="cs-row">
+          <div class="cs-text">
+            <h4>Outcome</h4>
+            <p>Skill Assessments launched as part of Learning Agent in June and became one of its top two most-used features.</p>
+            <p>For me, its significance went beyond assessments. The project demonstrated how AI experiences can move fluidly between conversation and graphical UI, using each modality where it works best.</p>
+          </div>
+          <figure class="cs-media">
+            <div class="cg">
+              <div class="cg-row"><button type="button" class="cg-item" style="--a:2.0833" aria-label="View full size: Assessment created from the organisation&rsquo;s own content"><img loading="lazy" decoding="async" src="assets/images/cs-assess-result.webp" width="825" height="396" alt="Assessment created from the organisation&rsquo;s own content"></button></div>
+              <div class="cg-row"><button type="button" class="cg-item" style="--a:1.7743" aria-label="View full size: Assessment summary showing learner strengths and focus areas"><img loading="lazy" decoding="async" src="assets/images/cs-assess-4.webp" width="2814" height="1586" alt="Assessment summary showing learner strengths and focus areas"></button></div>
+            </div>
+            <figcaption class="cs-cap"><span class="txt">Final assessment interface powered by the organization&rsquo;s trusted content, displaying a detailed breakdown of learner strengths and weaknesses.</span></figcaption>
+          </figure>
+        </div>
+        <!-- /READ MORE CONTENT: work-assessments -->
+        <div class="cs-end"><button type="button" class="more-toggle" aria-controls="work-assessments-more" aria-expanded="false" data-less><span class="more-label">Read less</span><span class="more-chev up" aria-hidden="true"></span></button></div>
+      </div>
+      </article>
+
+      <article class="track" id="work-content-camera">
+        <div class="track-text">
+          <p class="track-num">Track 2</p>
+          <h3>Content Camera <span class="track-prod">| Microsoft Education</span></h3>
+          <p class="track-desc">An experience was designed around lens technology that turns a physical whiteboard into clear, shareable digital content, so it moves easily from the room into the digital classroom.</p>
+          <button type="button" class="more-toggle" aria-controls="work-content-camera-more" aria-expanded="false"><span class="more-label">Read more</span><span class="less-label">Read less</span><span class="more-chev" aria-hidden="true"></span></button>
+        </div>
+        <figure class="show" style="--ratio:1440/810">
+          <div class="slides" tabindex="0" role="button" aria-label="View current image full size">
+            <img loading="lazy" decoding="async" class="slide on" id="first-content-camera" src="assets/images/image-14.webp" width="1440" height="810" alt="Content camera in Microsoft Teams — screen 1 of 5">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-15.webp" width="1440" height="810" alt="Content camera in Microsoft Teams — screen 2 of 5">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-16.webp" width="1440" height="810" alt="Content camera in Microsoft Teams — screen 3 of 5">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-17.webp" width="1440" height="810" alt="Content camera in Microsoft Teams — screen 4 of 5">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-18.webp" width="1440" height="810" alt="Content camera in Microsoft Teams — screen 5 of 5">
+          </div>
+          <figcaption class="show-line"><span class="txt">Content camera — sharing whiteboards and physical content in Teams meetings, simplified with AI</span><span class="state">Paused</span><span class="count"></span></figcaption>
+        </figure>
+        <div class="cs" id="work-content-camera-more" role="region" aria-label="Case study details">
+        <!-- READ MORE CONTENT: work-content-camera -->
+        <div class="cs-row">
+          <div class="cs-text">
+            <h4>Challenge</h4>
+            <p>Around 2020, at the height of COVID, everyday collaboration moved almost overnight from physical rooms to screens. Something subtle was lost in that transition. Physical whiteboards had made presentations participatory: people could draw, point, explain and build ideas together.</p>
+            <p>Microsoft Lens technology could perspective-correct a physical whiteboard and keep its content visible even when a presenter stood in front of it. The technology was powerful, but the design challenge was making it feel simple enough to disappear into the meeting experience.</p>
+            <p>This was a particularly interesting problem because the experience extended beyond the screen. It involved the whiteboard, camera, presenter, physical room and remote viewers simultaneously.</p>
+          </div>
+          <figure class="cs-media">
+            <div class="cg">
+              <div class="cg-row"><button type="button" class="cg-item" style="--a:1.3425" aria-label="View full size: Concept illustration of a laptop facing a physical whiteboard in a meeting room"><img loading="lazy" decoding="async" src="assets/images/cs-camera-1.webp" width="1944" height="1448" alt="Concept illustration of a laptop facing a physical whiteboard in a meeting room"></button></div>
+            </div>
+            <figcaption class="cs-cap"><span class="txt">Early concept illustration showing a physical whiteboard and screen setup in a hybrid meeting room.</span></figcaption>
+          </figure>
+        </div>
+        <div class="cs-row">
+          <div class="cs-text">
+            <h4>My role</h4>
+            <p>I worked on designing the Content Camera experience for Microsoft Teams, translating sophisticated imaging technology into a simple experience that could work for both enterprise and education scenarios.</p>
+            <p>My role was largely about resisting complexity. The technology offered several possibilities and controls, but exposing every capability would have made users manage the technology instead of focusing on their meeting.</p>
+          </div>
+          <figure class="cs-media">
+            <div class="cg">
+              <div class="cg-row"><button type="button" class="cg-item" style="--a:1.7652" aria-label="View full size: Exploration: Teams meeting tip saying content share will be paused to enable video"><img loading="lazy" decoding="async" src="assets/images/cs-camera-2.webp" width="1218" height="690" alt="Exploration: Teams meeting tip saying content share will be paused to enable video"></button></div>
+              <div class="cg-row"><button type="button" class="cg-item" style="--a:1.7141" aria-label="View full size: Exploration: choosing a camera to share content from"><img loading="lazy" decoding="async" src="assets/images/cs-camera-3.webp" width="2770" height="1616" alt="Exploration: choosing a camera to share content from"></button><button type="button" class="cg-item" style="--a:1.7817" aria-label="View full size: Exploration: adjusting the whiteboard frame before sharing"><img loading="lazy" decoding="async" src="assets/images/cs-camera-5.webp" width="3004" height="1686" alt="Exploration: adjusting the whiteboard frame before sharing"></button></div>
+            </div>
+            <figcaption class="cs-cap"><span class="txt">Design explorations showing the struggle with simplifying the setup flow</span></figcaption>
+          </figure>
+        </div>
+        <div class="cs-row">
+          <div class="cs-text">
+            <h4>Process</h4>
+            <p>We explored the complete physical and digital ecosystem: camera placement, existing room setups, built-in laptop cameras, presenters moving in front of whiteboards, perspective correction and what remote viewers actually needed to see.</p>
+            <p>Instead of exposing numerous controls, we converged on one primary flow with intelligent defaults. The system would do the expected thing automatically, while still giving users the flexibility to turn off capabilities they did not want.</p>
+            <p>The philosophy was simple: <span class="em-line">let the technology do the heavy lifting and let people concentrate on communicating.</span></p>
+          </div>
+          <figure class="cs-media">
+            <div class="cg">
+              <div class="cg-row"><button type="button" class="cg-item cg-video" style="--a:1.7778" data-video="assets/videos/cs-camera-story.mp4" aria-label="Play larger: Animated storyboard of the Content Camera journey"><video autoplay muted loop playsinline preload="metadata" poster="assets/images/cs-camera-story-poster.webp" width="1920" height="1080" aria-hidden="true" tabindex="-1"><source src="assets/videos/cs-camera-story.mp4" type="video/mp4"></video><span class="cg-play" aria-hidden="true"></span></button></div>
+            </div>
+            <figcaption class="cs-cap"><span class="txt">Animated storyboard demonstrating a streamlined, effortless user journey from camera setup to content sharing.</span></figcaption>
+          </figure>
+        </div>
+        <div class="cs-row">
+          <div class="cs-text">
+            <h4>Outcome</h4>
+            <p>The result was an experience that turned sophisticated computer-vision capabilities into something approachable and useful in everyday meetings.</p>
+            <p>What I value most about this project is that its success came from what we chose not to expose. The feature continues to be available in Microsoft Teams meetings today, years after it was designed.</p>
+          </div>
+          <figure class="cs-media">
+            <div class="cg">
+              <div class="cg-row"><button type="button" class="cg-item cg-video" style="--a:1.7747" data-video="assets/videos/cs-camera-teams.mp4" aria-label="Play larger: Content Camera in a Microsoft Teams meeting"><video autoplay muted loop playsinline preload="metadata" poster="assets/images/cs-camera-teams-poster.webp" width="1040" height="586" aria-hidden="true" tabindex="-1"><source src="assets/videos/cs-camera-teams.mp4" type="video/mp4"></video><span class="cg-play" aria-hidden="true"></span></button></div>
+            </div>
+            <figcaption class="cs-cap"><span class="txt">Content Camera feature sits in your Teams meeting waiting for you to try it out</span></figcaption>
+          </figure>
+        </div>
+        <!-- /READ MORE CONTENT: work-content-camera -->
+        <div class="cs-end"><button type="button" class="more-toggle" aria-controls="work-content-camera-more" aria-expanded="false" data-less><span class="more-label">Read less</span><span class="more-chev up" aria-hidden="true"></span></button></div>
+      </div>
+      </article>
+
+      <article class="track" id="work-admin">
+        <div class="track-text">
+          <p class="track-num">Track 3</p>
+          <h3>Multi-layered Academy Content <span class="track-prod">| Viva Learning</span></h3>
+          <p class="track-desc">Managing learning is complex for admins, and academies make it harder. This work made it simpler to customise an academy with branding and sections. Flows were designed to give admins control without the overhead, so they can shape academies that reflect their organisation.</p>
+          <button type="button" class="more-toggle" aria-controls="work-admin-more" aria-expanded="false"><span class="more-label">Read more</span><span class="less-label">Read less</span><span class="more-chev" aria-hidden="true"></span></button>
+        </div>
+        <figure class="show" style="--ratio:1440/1024">
+          <div class="slides" tabindex="0" role="button" aria-label="View current image full size">
+            <img loading="lazy" decoding="async" class="slide on" id="first-admin" src="assets/images/image-19.webp" width="1440" height="1024" alt="Digital Academy curation for learning admins — screen 1 of 10">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-20.webp" width="1440" height="1024" alt="Digital Academy curation for learning admins — screen 2 of 10">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-21.webp" width="1440" height="1024" alt="Digital Academy curation for learning admins — screen 3 of 10">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-22.webp" width="1440" height="1024" alt="Digital Academy curation for learning admins — screen 4 of 10">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-23.webp" width="1440" height="1024" alt="Digital Academy curation for learning admins — screen 5 of 10">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-24.webp" width="1440" height="1024" alt="Digital Academy curation for learning admins — screen 6 of 10">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-25.webp" width="1440" height="1024" alt="Digital Academy curation for learning admins — screen 7 of 10">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-26.webp" width="1440" height="1024" alt="Digital Academy curation for learning admins — screen 8 of 10">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-27.webp" width="1440" height="1024" alt="Digital Academy curation for learning admins — screen 9 of 10">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-28.webp" width="1440" height="1024" alt="Digital Academy curation for learning admins — screen 10 of 10">
+          </div>
+          <figcaption class="show-line"><span class="txt">Digital Academy curation experience for learning admins</span><span class="state">Paused</span><span class="count"></span></figcaption>
+        </figure>
+        <div class="cs" id="work-admin-more" role="region" aria-label="Case study details">
+        <!-- READ MORE CONTENT: work-admin -->
+        <div class="cs-row text-only">
+          <div class="cs-text">
+            <h4>Challenge</h4>
+            <p>Viva Learning already had digital academies that allowed learning administrators to curate organisation-specific learning content around particular domains.</p>
+            <p>As academies grew, customers needed more structure. A flat collection of content was no longer enough. They wanted to organise content into sections so learners could understand and navigate larger academies more easily.</p>
+            <p>But introducing hierarchy created two interconnected problems: how learners would consume a multi-layered academy, and how administrators would build and maintain one. We also couldn&rsquo;t disregard existing academies and the work administrators had already invested in creating them.</p>
+          </div>
+          
+        </div>
+        <div class="cs-row">
+          <div class="cs-text">
+            <h4>My role</h4>
+            <p>I worked across both the learner and admin experiences.</p>
+            <p>Admin tools can easily receive less design attention because far fewer people use them than learner-facing surfaces. I strongly advocated for treating the curation experience with the same level of craft and attention to detail.</p>
+            <p>My reasoning was simple: <span class="em-line">one administrator&rsquo;s experience can determine the learning experience of thousands of employees.</span></p>
+          </div>
+          <figure class="cs-media">
+            <div class="cg">
+              <div class="cg-row"><button type="button" class="cg-item" style="--a:1.4048" aria-label="View full size: Exploration: organising academy content into sections"><img loading="lazy" decoding="async" src="assets/images/cs-academy-1.webp" width="2318" height="1650" alt="Exploration: organising academy content into sections"></button><button type="button" class="cg-item" style="--a:1.4048" aria-label="View full size: Exploration: academy branding and featured set"><img loading="lazy" decoding="async" src="assets/images/cs-academy-2.webp" width="2318" height="1650" alt="Exploration: academy branding and featured set"></button></div>
+              <div class="cg-row"><button type="button" class="cg-item" style="--a:1.4062" aria-label="View full size: Exploration: empty academy catalogue ready for content"><img loading="lazy" decoding="async" src="assets/images/cs-academy-5.webp" width="2368" height="1684" alt="Exploration: empty academy catalogue ready for content"></button><button type="button" class="cg-item" style="--a:1.4052" aria-label="View full size: Exploration: academy structure with sections"><img loading="lazy" decoding="async" src="assets/images/cs-academy-7.webp" width="2594" height="1846" alt="Exploration: academy structure with sections"></button></div>
+              <div class="cg-row"><button type="button" class="cg-item" style="--a:1.4052" aria-label="View full size: Exploration: adding a section to the academy structure"><img loading="lazy" decoding="async" src="assets/images/cs-academy-8.webp" width="2594" height="1846" alt="Exploration: adding a section to the academy structure"></button><button type="button" class="cg-item" style="--a:1.4052" aria-label="View full size: Exploration: sections and sub-sections with learning paths"><img loading="lazy" decoding="async" src="assets/images/cs-academy-9.webp" width="2594" height="1846" alt="Exploration: sections and sub-sections with learning paths"></button></div>
+            </div>
+            <figcaption class="cs-cap"><span class="txt">UI design explorations showing simplified workflows for curating and organizing a multilayered academy.</span></figcaption>
+          </figure>
+        </div>
+        <div class="cs-row">
+          <div class="cs-text">
+            <h4>Process</h4>
+            <p>A major design question was how to introduce sections without forcing existing customers to rebuild their academies.</p>
+            <p>Through extensive exploration and brainstorming, we created a model where existing flat academies could remain exactly as they were, while administrators who needed additional structure could progressively organise their content into sections.</p>
+            <p>Because this represented a meaningful change to an established workflow, we rigorously tested the experience with flagship customers and supported them through onboarding.</p>
+            <p>As an extension of the work, we also designed a way for learners to expand and explore academy content without losing their current context, responding to a priority request from customers while working within tight timelines.</p>
+          </div>
+          <figure class="cs-media">
+            <div class="cg">
+              <div class="cg-row"><button type="button" class="cg-item" style="--a:1.3996" aria-label="View full size: Vision mockup: an academy page with pillars and learning paths"><img loading="lazy" decoding="async" src="assets/images/cs-academy-3.webp" width="2494" height="1782" alt="Vision mockup: an academy page with pillars and learning paths"></button><button type="button" class="cg-item" style="--a:1.4027" aria-label="View full size: Vision mockup: academy dashboard listing a learner&rsquo;s academies"><img loading="lazy" decoding="async" src="assets/images/cs-academy-4.webp" width="2494" height="1778" alt="Vision mockup: academy dashboard listing a learner&rsquo;s academies"></button></div>
+            </div>
+            <figcaption class="cs-cap"><span class="txt">High-level vision mockups illustrating the future layout and structure of learning academies.</span></figcaption>
+          </figure>
+        </div>
+        <div class="cs-row">
+          <div class="cs-text">
+            <h4>Outcome</h4>
+            <p>Multi-layered academies gave customers a scalable way to organise increasingly complex learning programmes without disrupting existing academy content.</p>
+            <p>The model later helped enable the Copilot Academy to structure learning around dedicated Copilot products and user groups.</p>
+            <p>More importantly, the project reinforced something I strongly believe: enterprise admin experiences deserve excellent design because their impact scales far beyond the individual administrator using them.</p>
+          </div>
+          <figure class="cs-media">
+            <div class="cg">
+              <div class="cg-row"><button type="button" class="cg-item" style="--a:1.4062" aria-label="View full size: Final academy page with expandable learning paths"><img loading="lazy" decoding="async" src="assets/images/cs-academy-final.webp" width="1440" height="1024" alt="Final academy page with expandable learning paths"></button></div>
+            </div>
+            <figcaption class="cs-cap"><span class="txt">Final academy interface allowing learners to browse and consume content directly without leaving the platform.</span></figcaption>
+          </figure>
+        </div>
+        <!-- /READ MORE CONTENT: work-admin -->
+        <div class="cs-end"><button type="button" class="more-toggle" aria-controls="work-admin-more" aria-expanded="false" data-less><span class="more-label">Read less</span><span class="more-chev up" aria-hidden="true"></span></button></div>
+      </div>
+      </article>
+
+      <article class="track" id="work-autosave">
+        <div class="track-text">
+          <p class="track-num">Track 4</p>
+          <h3>Autosave + Save as Draft <span class="track-prod">| Viva Learning Academies</span></h3>
+          <p class="track-desc">Extensive user research was conducted to ensure that bringing in autosave in academy curation was considered valuable and this change met admin needs without confusing those who were used to saving manually. Our work focused heavily on representation of system status to make the saved state clear and easy to trust.</p>
+          <button type="button" class="more-toggle" aria-controls="work-autosave-more" aria-expanded="false"><span class="more-label">Read more</span><span class="less-label">Read less</span><span class="more-chev" aria-hidden="true"></span></button>
+        </div>
+        <figure class="show" style="--ratio:1440/1024">
+          <div class="slides" tabindex="0" role="button" aria-label="View current image full size">
+            <img loading="lazy" decoding="async" class="slide on" id="first-autosave" src="assets/images/image-35.webp" width="1440" height="1024" alt="Autosave in Digital Academy curation — screen 1 of 5">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-36.webp" width="1440" height="1024" alt="Autosave in Digital Academy curation — screen 2 of 5">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-37.webp" width="1440" height="1024" alt="Autosave in Digital Academy curation — screen 3 of 5">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-38.webp" width="1440" height="1024" alt="Autosave in Digital Academy curation — screen 4 of 5">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-39.webp" width="1440" height="1024" alt="Autosave in Digital Academy curation — screen 5 of 5">
+          </div>
+          <figcaption class="show-line"><span class="txt">Autosave for learning admins — changes are saved as they curate an academy</span><span class="state">Paused</span><span class="count"></span></figcaption>
+        </figure>
+        <div class="cs" id="work-autosave-more" role="region" aria-label="Case study details">
+        <!-- READ MORE CONTENT: work-autosave -->
+        <div class="cs-row">
+          <div class="cs-text">
+            <h4>Challenge</h4>
+            <p>Designing a new product gives you freedom. Improving an established one doesn&rsquo;t.</p>
+            <p>When people have used a product for years, they develop behaviours and workarounds around it. Those behaviours can easily become arguments for preserving the status quo: &ldquo;Customers are already fine with this. Why change it?&rdquo;</p>
+            <p>I encountered this while improving the curation experience. Customers wanted to edit already-published learning paths so outdated content could be removed without disrupting what learners currently had access to.</p>
+            <p>But while investigating that problem, I noticed a more fundamental issue: administrators could lose their work if they forgot to save it.</p>
+          </div>
+          <figure class="cs-media">
+            <div class="cg">
+              <div class="cg-row"><button type="button" class="cg-item" style="--a:3.9299" aria-label="View full size: Autosave working and not working states in the academy header"><img loading="lazy" decoding="async" src="assets/images/cs-autosave-message4.webp" width="2578" height="656" alt="Autosave working and not working states in the academy header"></button></div>
+            </div>
+            <figcaption class="cs-cap"><span class="txt">To be autosaved or not; that is the question</span></figcaption>
+          </figure>
+        </div>
+        <div class="cs-row">
+          <div class="cs-text">
+            <h4>My role</h4>
+            <p>I personally drove much of the research and user alignment behind bringing autosave and draft workflows into the curation experience.</p>
+            <p>My role wasn&rsquo;t simply to design the requested feature. It was to challenge whether the existing workflow met the quality bar users should reasonably expect from a modern creation tool.</p>
+          </div>
+          <figure class="cs-media">
+            <div class="cg">
+              <div class="cg-row"><button type="button" class="cg-item" style="--a:2.0295" aria-label="View full size: Academy list with autosave and content status icons"><img loading="lazy" decoding="async" src="assets/images/cs-autosave-status.webp" width="2618" height="1290" alt="Academy list with autosave and content status icons"></button></div>
+            </div>
+            <figcaption class="cs-cap"><span class="txt">UI of the autosave + content status icons and copy that was tested during user research</span></figcaption>
+          </figure>
+        </div>
+        <div class="cs-row">
+          <div class="cs-text">
+            <h4>Process</h4>
+            <p>Autosave had not emerged as a headline request in customer conversations, which became an important learning for me.</p>
+            <blockquote>Users don&rsquo;t always explicitly request capabilities they already expect software to provide.</blockquote>
+            <p>I backed the proposal with secondary research and existing user signals such as &ldquo;my work gets lost if I forget to save.&rdquo; Instead of treating these as isolated complaints, we looked at the underlying problem.</p>
+            <p>That led us beyond autosave to a broader content lifecycle. Administrators could create drafts on top of published content, review changes internally, and publish them when ready.</p>
+            <p>We paid close attention to the language, icons and actions surrounding different content states such as draft, published, and published with edits. Each state needed to be understandable and each available action needed to make sense in context.</p>
+          </div>
+          <figure class="cs-media">
+            <div class="cg">
+              <div class="cg-row"><button type="button" class="cg-item" style="--a:2.8466" aria-label="View full size: System flow diagram for autosave states and failures"><img loading="lazy" decoding="async" src="assets/images/cs-autosave-flow.webp" width="5420" height="1904" alt="System flow diagram for autosave states and failures"></button></div>
+            </div>
+            <figcaption class="cs-cap"><span class="txt">A system flow diagram mapping successful autosave states, failure scenarios, and user notifications</span></figcaption>
+          </figure>
+        </div>
+        <div class="cs-row">
+          <div class="cs-text">
+            <h4>Outcome</h4>
+            <p>We introduced both autosave and save-as-draft workflows, creating a safer and more flexible content-authoring experience for learning administrators.</p>
+            <p>But my biggest takeaway wasn&rsquo;t the feature itself.</p>
+            <p>It was a reminder that research isn&rsquo;t simply about recording what customers ask for. Designers need to read between the lines, understand people&rsquo;s behaviour and recognise problems that users may have learned to tolerate rather than articulate.</p>
+            <p>And even when the direct user is just one administrator, their experience matters. Their decisions ultimately shape learning for thousands of people across their organisation.</p>
+          </div>
+          <figure class="cs-media">
+            <div class="cg">
+              <div class="cg-row"><button type="button" class="cg-item" style="--a:2.4937" aria-label="View full size: Teaching tip introducing autosave in academy curation"><img loading="lazy" decoding="async" src="assets/images/cs-autosave-message2.webp" width="1980" height="794" alt="Teaching tip introducing autosave in academy curation"></button></div>
+              <div class="cg-row"><button type="button" class="cg-item" style="--a:4.7569" aria-label="View full size: Banner saying changes will be saved as a draft until published"><img loading="lazy" decoding="async" src="assets/images/cs-autosave-message3.webp" width="2074" height="436" alt="Banner saying changes will be saved as a draft until published"></button></div>
+            </div>
+            <figcaption class="cs-cap"><span class="txt">Success of our experience depends equally on thoughtful design and the ecosystem in which it operates</span></figcaption>
+          </figure>
+        </div>
+        <!-- /READ MORE CONTENT: work-autosave -->
+        <div class="cs-end"><button type="button" class="more-toggle" aria-controls="work-autosave-more" aria-expanded="false" data-less><span class="more-label">Read less</span><span class="more-chev up" aria-hidden="true"></span></button></div>
+      </div>
+      </article>
+
+      <article class="track no-media" id="work-future">
+        <div class="track-text">
+          <p class="track-num">Track 5</p>
+          <h3>Future of Learning <span class="track-prod">| Vision work</span></h3>
+          <p class="track-desc">North Star explorations of how AI could fundamentally change learning, from an AI-powered Copilot Academy to a Learning Agent that adapts to each learner&rsquo;s goals, preferences and working context.</p>
+          <button type="button" class="more-toggle" aria-controls="work-future-more" aria-expanded="false"><span class="more-label">Read more</span><span class="less-label">Read less</span><span class="more-chev" aria-hidden="true"></span></button>
+        </div>
+        <div class="cs" id="work-future-more" role="region" aria-label="Case study details">
+        <!-- READ MORE CONTENT: work-future -->
+        <div class="cs-row">
+          <div class="cs-text">
+            <h4>Challenge</h4>
+            <p>Most product work starts with constraints like timelines, engineering effort, and current feasibility. Vision work asks you to temporarily set those aside. Divergent thinking is essential to the design process&mdash;a strong North Star doesn&rsquo;t need to ship verbatim; its purpose is to set an ambitious benchmark that pulls near-term decisions forward.</p>
+          </div>
+          <figure class="cs-media vgrid" aria-label="Vision videos">
+            <div class="vcell"><button type="button" class="vtile" data-video="assets/videos/vision-1.mp4" data-cap="Seamless content consumption that adapts to multiple formats based on user preference." aria-label="Play Vision 1: Seamless content consumption that adapts to multiple formats based on user preference."><img loading="lazy" decoding="async" src="assets/images/vision-1-poster.webp" width="1728" height="1080" alt=""><span class="cg-play" aria-hidden="true"></span><span class="vnum">Vision 1</span></button><p class="vcap">Seamless content consumption that adapts to multiple formats based on user preference.</p></div>
+            <div class="vcell"><button type="button" class="vtile" data-video="assets/videos/vision-2.mp4" data-cap="Personalized learning paths that cut through an overwhelming catalog to deliver relevant content." aria-label="Play Vision 2: Personalized learning paths that cut through an overwhelming catalog to deliver relevant content."><img loading="lazy" decoding="async" src="assets/images/vision-2-poster.webp" width="1728" height="1080" alt=""><span class="cg-play" aria-hidden="true"></span><span class="vnum">Vision 2</span></button><p class="vcap">Personalized learning paths that cut through an overwhelming catalog to deliver relevant content.</p></div>
+          </figure>
+          
+        </div>
+        <div class="cs-row">
+          <div class="cs-text">
+            <h4>My role</h4>
+            <p>I led future-looking explorations on how AI could fundamentally transform learning, starting with Copilot Academy and expanding into a dedicated Learning Agent. My focus was looking beyond the immediate roadmap to make abstract, personalized AI concepts tangible enough for teams to debate, challenge, and build toward.</p>
+          </div>
+          <figure class="cs-media vgrid solo" aria-label="Vision videos">
+            <div class="vcell pair"><div class="vpair"><button type="button" class="vtile" data-video="assets/videos/vision-3.mp4" data-cap="A redesigned homepage that uses clean space and focused aesthetics to keep learners engaged." aria-label="Play Vision 3: A redesigned homepage that uses clean space and focused aesthetics to keep learners engaged."><img loading="lazy" decoding="async" src="assets/images/vision-3-poster.webp" width="1728" height="1080" alt=""><span class="cg-play" aria-hidden="true"></span><span class="vnum">Vision 3</span></button><button type="button" class="vtile" data-video="assets/videos/vision-4.mp4" data-cap="A redesigned homepage that uses clean space and focused aesthetics to keep learners engaged." aria-label="Play Vision 4: A redesigned homepage that uses clean space and focused aesthetics to keep learners engaged."><img loading="lazy" decoding="async" src="assets/images/vision-4-poster.webp" width="1728" height="1080" alt=""><span class="cg-play" aria-hidden="true"></span><span class="vnum">Vision 4</span></button></div><p class="vcap">A redesigned homepage that uses clean space and focused aesthetics to keep learners engaged.</p></div>
+          </figure>
+          
+        </div>
+        <div class="cs-row">
+          <div class="cs-text">
+            <h4>Process</h4>
+            <p>We started with a provocative question:</p>
+            <blockquote>If Copilot Academy teaches people how to use AI, why shouldn&rsquo;t the academy itself feel AI-powered?</blockquote>
+            <p>As our focus shifted to a dedicated Learning Agent, we pushed further. Instead of forcing everyone through a static catalog or relying on users to declare their intent via text prompts, we explored an experience that reads interaction signals. Over time, the platform adapts automatically to a learner&rsquo;s goals, style, and working context.</p>
+          </div>
+          <figure class="cs-media vgrid" aria-label="Vision videos">
+            <div class="vcell"><button type="button" class="vtile" data-video="assets/videos/vision-5.mp4" data-cap="Curating a diverse content experience that appeals to every user&rsquo;s taste." aria-label="Play Vision 5: Curating a diverse content experience that appeals to every user&rsquo;s taste."><img loading="lazy" decoding="async" src="assets/images/vision-5-poster.webp" width="1728" height="1080" alt=""><span class="cg-play" aria-hidden="true"></span><span class="vnum">Vision 5</span></button><p class="vcap">Curating a diverse content experience that appeals to every user&rsquo;s taste.</p></div>
+            <div class="vcell"><button type="button" class="vtile" data-video="assets/videos/vision-6.mp4" data-cap="Natural, uninterrupted conversations that effortlessly keep track of multiple topics." aria-label="Play Vision 6: Natural, uninterrupted conversations that effortlessly keep track of multiple topics."><img loading="lazy" decoding="async" src="assets/images/vision-6-poster.webp" width="1728" height="1080" alt=""><span class="cg-play" aria-hidden="true"></span><span class="vnum">Vision 6</span></button><p class="vcap">Natural, uninterrupted conversations that effortlessly keep track of multiple topics.</p></div>
+          </figure>
+          
+        </div>
+        <div class="cs-row">
+          <div class="cs-text">
+            <h4>Outcome</h4>
+            <p>While these North Star concepts weren&rsquo;t meant to ship as-is, they established a clear strategic direction: treating learning as an adaptive relationship rather than a static destination.</p>
+            <p><span class="em-line">The learner learns, and so does the agent.</span> Every interaction makes the experience more personal with less manual setup&mdash;shifting AI learning from a chatbot layered over content to a system that evolves alongside the user.</p>
+          </div>
+          <figure class="cs-media vgrid solo" aria-label="Vision videos">
+            <div class="vcell pair"><div class="vpair"><button type="button" class="vtile" data-video="assets/videos/vision-7.mp4" data-cap="Flexible learning modes designed to fit every individual style." aria-label="Play Vision 7: Flexible learning modes designed to fit every individual style."><img loading="lazy" decoding="async" src="assets/images/vision-7-poster.webp" width="1728" height="1080" alt=""><span class="cg-play" aria-hidden="true"></span><span class="vnum">Vision 7</span></button><button type="button" class="vtile" data-video="assets/videos/vision-8.mp4" data-cap="Flexible learning modes designed to fit every individual style." aria-label="Play Vision 8: Flexible learning modes designed to fit every individual style."><img loading="lazy" decoding="async" src="assets/images/vision-8-poster.webp" width="1728" height="1080" alt=""><span class="cg-play" aria-hidden="true"></span><span class="vnum">Vision 8</span></button></div><p class="vcap">Flexible learning modes designed to fit every individual style.</p></div>
+          </figure>
+          
+        </div>
+        <!-- /READ MORE CONTENT: work-future -->
+        <div class="cs-end"><button type="button" class="more-toggle" aria-controls="work-future-more" aria-expanded="false" data-less><span class="more-label">Read less</span><span class="more-chev up" aria-hidden="true"></span></button></div>
+      </div>
+      </article>
+
+      <article class="track" id="work-graduation">
+        <div class="track-text">
+          <p class="track-num">Track 6</p>
+          <h3>Safe or Sorry and BBB <span class="track-prod">| Graduation projects</span></h3>
+          <p class="track-desc">My post-graduation projects focused on sexual and reproductive health. Safe or Sorry is a card game that breaks the ice when trainers of sex ed sessions are inducted. BBB/ Bing Bang Boom is a mobile health app that gives adolescents, and their parents, an additional complementary way to learn alongside sex ed classes at school. Links to these projects can be found on my <a href="https://www.behance.net/mayuradatar" target="_blank" rel="noopener">Behance page</a>.</p>
+        </div>
+        <figure class="show tall" style="--ratio:536/578">
+          <div class="slides" tabindex="0" role="button" aria-label="View current image full size">
+            <img loading="lazy" decoding="async" class="slide on" id="first-graduation" src="assets/images/image-40.webp" width="536" height="578" alt="Safe or Sorry and Bing Bang Boom — screen 1 of 2">
+            <img loading="lazy" decoding="async" class="slide" src="assets/images/image-41.webp" width="536" height="578" alt="Safe or Sorry and Bing Bang Boom — screen 2 of 2">
+          </div>
+          <figcaption class="show-line"><span class="txt">Bing Bang Boom — a mobile health app for adolescents and their parents</span><span class="state">Paused</span><span class="count"></span></figcaption>
+        </figure>
+      </article>
+    </div>
+  </section>
+  </div>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Image viewer">
+    <button type="button" class="lb-close" id="lb-close" aria-label="Close">&times;</button>
+    <div class="lb-stage">
+      <img loading="lazy" decoding="async" id="lb-img" alt="">
+    </div>
+    <p class="lb-cap" id="lb-cap"></p>
+  </dialog>
+
+  <dialog class="lightbox vbox" id="vbox" aria-label="Video viewer">
+    <button type="button" class="lb-close" id="vb-close" aria-label="Close">&times;</button>
+    <div class="lb-stage">
+      <video id="vb-video" muted loop playsinline controls></video>
+      <p class="vb-missing" id="vb-missing" hidden>This video hasn&rsquo;t been added yet.</p>
+    </div>
+    <p class="lb-cap" id="vb-cap"></p>
+  </dialog>
+
+  <!-- ===================== PAGE: RESUME ===================== -->
+  <div class="page" id="page-resume" data-page="resume">
+  <section class="section resume" id="resume">
+    <div class="wrap">
+      <div class="resume-head">
+        <div>
+          <p class="eyebrow">Resume</p>
+          <h2>Mayura Datar</h2>
+        </div>
+        <button type="button" class="pill" id="save-pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3h2v10.2l3.6-3.6 1.4 1.4-6 6-6-6 1.4-1.4 3.6 3.6V3zM4 19h16v2H4z"/></svg>Save as PDF</button>
+      </div>
+      <p class="summary">Product Designer with 6+ years of experience spanning enterprise software and learning platforms. Specialized in transforming complex processes into intuitive user flows and designing AI powered personalised learning systems.</p>
+
+      <h3 class="block-title">Professional experience</h3>
+      <div class="job">
+        <div class="job-head"><h3>Microsoft</h3><span class="meta">Product Designer &nbsp;|&nbsp; 2020 &ndash; Present</span></div>
+        <ul>
+          <li>Currently driving design for Learning Agent, Microsoft&rsquo;s AI-powered learning experience focused on personalization, intent driven learning modes, assessments, learning plans, microlearning, and AI-driven workforce transformation.</li>
+          <li>Contributed to strategic initiatives like Copilot Academy, Self Assessments for enterprise learners and simplifying learning admin experiences for content creation.</li>
+          <li>Core part of the team that created Viva Learning &mdash; Microsoft&rsquo;s one-stop-shop learning experience platform that serves around 10K tenants and ~1.8M monthly active users.</li>
+          <li>Shaped the production UX for Content camera, an AI-assisted physical-content sharing experience in Teams, simplifying complex camera and computer-vision capabilities into familiar, guided meeting interactions.</li>
+        </ul>
+      </div>
+
+      <h3 class="block-title">Previous engagements</h3>
+      <div class="job">
+        <div class="job-head"><h3>Adobe</h3><span class="meta">Interaction Design Intern &nbsp;|&nbsp; 2019</span></div>
+        <p>Designed onboarding and 3 part interactive tutorials for Adobe Flash users beginning their journey that blended animation, instructional design, and interaction design.</p>
+      </div>
+      <div class="job">
+        <div class="job-head"><h3>Cognizant</h3><span class="meta">Visual Designer &nbsp;|&nbsp; 2013 &ndash; 2017</span></div>
+        <p>Translated early product concepts into compelling proof-of-concept videos exploring multiple media like animation, stop motion and live action videos.</p>
+      </div>
+
+      <h3 class="block-title">Education</h3>
+      <div class="job">
+        <div class="job-head"><h3>IDC School of Design</h3><span class="meta">IIT Bombay &nbsp;|&nbsp; 2020</span></div>
+        <p>Master of Design &nbsp;|&nbsp; Interaction Design</p>
+      </div>
+      <div class="job">
+        <div class="job-head"><h3>National Institute of Design</h3><span class="meta">Ahmedabad &nbsp;|&nbsp; 2013</span></div>
+        <p>Bachelor of Design &nbsp;|&nbsp; Animation Film Design</p>
+      </div>
+
+      <h3 class="block-title">Skills &amp; tools</h3>
+      <div class="skills">
+        <div><h4>Product Design</h4><p>Human-Centered AI Design; User research; Interaction design; Design thinking &amp; Design process; UX Strategy; Accessibility &amp; Inclusive Design</p></div>
+        <div><h4>Product Building</h4><p>Rapid Prototyping; AI-Assisted Product Development; Prompt Design</p></div>
+        <div><h4>Design tools</h4><p>Figma; Adobe After Effects; Adobe Premiere Pro; Adobe Flash / Adobe Animate</p></div>
+        <div><h4>Development &amp; Product Building</h4><p>Visual Studio Code; GitHub Spark; AI-Assisted Development Tools; Microsoft Copilot Ecosystem</p></div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <!-- ===================== PAGE: ABOUT ME ===================== -->
+  <div class="page" id="page-about" data-page="about">
+  <section class="section about" id="about">
+    <div class="wrap wide">
+      <h2>About me</h2>
+      <div class="about-grid">
+        <a class="about-link" href="https://www.behance.net/mayuradatar" target="_blank" rel="noopener" title="See more on Behance"><img loading="lazy" decoding="async" class="about-art" src="assets/images/image-42.webp" width="508" height="296" alt="A grid of twelve of Mayura's illustrations in different styles: a family in a forest, a sleeping girl, a dragon, a village shopkeeper, children saving for Diwali and more"></a>
+        <p class="about-text">I love movies, theatre, and anything dramatic. I&rsquo;ve written and directed a couple of Marathi plays for children. I believe my illustrations offer a glimpse of who I am.</p>
+      </div>
+      <img loading="lazy" decoding="async" class="about-gif" src="assets/images/image-43.gif" width="1402" height="488" alt="Hand-drawn animation of Mayura at her desk with a laptop and a cup of coffee">
+    </div>
+  </section>
+  </div>
+</main>
+
+<footer class="footer" id="contact">
+  <p>Mayura Datar. AI Experience Designer</p>
+  <div class="hero-links">
+    <a class="pill" href="https://www.behance.net/mayuradatar" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 11.3c.9-.4 1.5-1.2 1.5-2.4C9.7 6.6 8 6 6 6H0v12.2h6.2c2.3 0 4.4-1.1 4.4-3.6 0-1.6-.8-2.8-2.4-3.3zM2.8 8.1h2.6c1 0 1.9.3 1.9 1.4 0 1.1-.7 1.5-1.7 1.5H2.8V8.1zm2.9 7.9H2.8v-3.3h3c1.2 0 2 .5 2 1.8 0 1.3-1 1.5-2.1 1.5zM15.4 3.9h5.3v1.5h-5.3zM24 13.6c0-2.9-1.7-5.3-4.8-5.3-3 0-5 2.2-5 5.1 0 3 1.9 5.1 5 5.1 2.3 0 3.8-1 4.6-3.3h-2.4c-.3.8-1.3 1.3-2.1 1.3-1.6 0-2.4-.9-2.4-2.4H24v-.5zm-7.2-1.2c.1-1.2.9-2 2.2-2 1.2 0 1.8.7 1.9 2h-4.1z"/></svg>Behance</a>
+    <a class="pill" href="https://www.youtube.com/@mayurad7/videos" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>YouTube</a>
+    <a class="pill" href="mailto:mayuradatar7@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.5l10 6.2 10-6.2V6H2zm20 2.8-10 6.2L2 8.8V18h20V8.8z"/></svg>Email</a>
+  </div>
+  <p class="fine">&copy; 2026 Mayura Datar</p>
+</footer>
+</div>
+
+<script>
+(function () {
+  /* Save resume as PDF */
+  document.getElementById("save-pdf").addEventListener("click", function () {
+    var framed = false;
+    try { framed = window.self !== window.top; } catch (e) { framed = true; }
+    if (framed) {   /* previews (OneDrive, Teams, Outlook, Copilot) block printing */
+      alert("To save the resume as a PDF, download this file and open it in your browser (Edge, Chrome, Safari or Firefox), then click Save as PDF again.");
+      return;
+    }
+    window.print();   /* choose "Save as PDF" in the print window */
+  });
+
+  /* ---- Pages: show one page at a time, chosen by the link (#...) ---- */
+  var pages = {};
+  document.querySelectorAll(".page").forEach(function (p) { pages[p.getAttribute("data-page")] = p; });
+  function pageFor(hash) {
+    if (!hash || hash === "#" || hash === "#top" || hash === "#story" || hash === "#contact") return "home";
+    var el = document.getElementById(hash.slice(1));
+    var p = el && el.closest ? el.closest(".page") : null;
+    return p ? p.getAttribute("data-page") : "home";
+  }
+  function route() {
+    var hash = location.hash, name = pageFor(hash);
+    if (hash === "#contact") name = current || "home";
+    Object.keys(pages).forEach(function (k) { pages[k].classList.toggle("active", k === name); });
+    document.querySelectorAll("[data-nav]").forEach(function (a) {
+      if (a.getAttribute("data-nav") === name && !(name === "home" && hash !== "#story")) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+    current = name;
+    var target = hash && hash.length > 1 ? document.getElementById(hash.slice(1)) : null;
+    var pageTop = (!hash || ["#top", "#about", "#work", "#resume"].indexOf(hash) > -1 || target === pages[name]);
+    /* run after the browser's own jump-to-anchor so ours wins */
+    setTimeout(function () {
+      if (target && !pageTop) target.scrollIntoView({ behavior: "auto", block: "start" });
+      else document.getElementById("scroller").scrollTo(0, 0);
+    }, 30);
+  }
+  var current = null;
+  window.addEventListener("hashchange", route);
+  route();
+
+  /* An image used twice is stored once; copies point to it with data-src (keeps the file small) */
+  document.querySelectorAll("img[data-src]").forEach(function (img) {
+    var src = document.getElementById(img.getAttribute("data-src"));
+    if (src) img.src = src.src;
+  });
+
+  /* ---- Gallery slideshows: 1 s on screen + 0.4 s fade, looping; pause on hover ---- */
+  var STAY = 1000, FADE = 400;
+  document.querySelectorAll(".show").forEach(function (show) {
+    var slides = show.querySelectorAll(".slide");
+    var count = show.querySelector(".count");
+    var i = 0, timer = null, hovered = false, visible = false;
+    function paint() { if (count) count.textContent = (i + 1) + " / " + slides.length; }
+    function step() {
+      slides[i].classList.remove("on");
+      i = (i + 1) % slides.length;
+      slides[i].classList.add("on");
+      paint();
+      schedule();
+    }
+    function schedule() { clearTimeout(timer); timer = null; if (slides.length > 1 && visible && !hovered) timer = setTimeout(step, STAY + FADE); }
+    /* Pause only for a real mouse hover or keyboard focus. Touch screens fire fake
+       hover/focus events on tap that never end, which would freeze the slideshow. */
+    function pause() { hovered = true; clearTimeout(timer); timer = null; show.classList.add("paused"); }
+    function resume() { hovered = false; show.classList.remove("paused"); schedule(); }
+    show.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") pause(); });
+    show.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") resume(); });
+    show.addEventListener("focusin", function (e) { if (e.target.matches && e.target.matches(":focus-visible")) pause(); });
+    show.addEventListener("focusout", function () { if (hovered && !show.matches(":hover")) resume(); });
+    /* Only run while on screen */
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) { visible = es[0].isIntersecting; schedule(); }, { threshold: 0.35 }).observe(show);
+    } else { visible = true; }
+    /* Manual navigation (chevrons appear while paused) */
+    function go(n) {
+      if (n < 0 || n >= slides.length || n === i) return;
+      slides[i].classList.remove("on"); i = n; slides[i].classList.add("on"); paint();
+    }
+    var area = show.querySelector(".slides"), prev = null, next = null;
+    if (slides.length > 1) {
+      prev = chevron("prev", "Previous image"); next = chevron("next", "Next image");
+      area.appendChild(prev); area.appendChild(next);
+      prev.addEventListener("click", function (e) { e.stopPropagation(); go(i - 1); });
+      next.addEventListener("click", function (e) { e.stopPropagation(); go(i + 1); });
+    }
+    var basePaint = paint;
+    paint = function () { basePaint(); if (prev) { prev.hidden = i === 0; next.hidden = i === slides.length - 1; } };
+    paint(); schedule();
+
+    /* Click the slideshow to see the current image full size */
+    var api = { slides: slides, get: function () { return i; }, go: go, show: show };
+    area.addEventListener("click", function () { openBox(api); });
+    area.addEventListener("keydown", function (e) { if (e.target === area && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openBox(api); } });
+  });
+
+  function chevron(dir, label) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "chev " + dir; b.setAttribute("aria-label", label);
+    b.innerHTML = dir === "prev" ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>' : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
+    return b;
+  }
+
+  var box = document.getElementById("lightbox"), lbImg = document.getElementById("lb-img"), lbCap = document.getElementById("lb-cap");
+  var lbStage = box.querySelector(".lb-stage"), lbPrev = chevron("prev", "Previous image"), lbNext = chevron("next", "Next image"), cur = null;
+  lbStage.appendChild(lbPrev); lbStage.appendChild(lbNext);
+  function lbPaint() {
+    var n = cur.get(), img = cur.slides[n];
+    lbImg.src = img.src; lbImg.alt = img.alt;
+    lbCap.textContent = cur.show.querySelector(".txt").textContent + (cur.slides.length > 1 ? "  \u00b7  " + (n + 1) + " / " + cur.slides.length : "");
+    lbPrev.hidden = n === 0; lbNext.hidden = n === cur.slides.length - 1;
+  }
+  function lbGo(d) { var n = cur.get() + d; if (n < 0 || n >= cur.slides.length) return; cur.go(n); lbPaint(); }
+  lbPrev.addEventListener("click", function (e) { e.stopPropagation(); lbGo(-1); });
+  lbNext.addEventListener("click", function (e) { e.stopPropagation(); lbGo(1); });
+  box.addEventListener("keydown", function (e) { if (!cur) return; if (e.key === "ArrowLeft") lbGo(-1); if (e.key === "ArrowRight") lbGo(1); });
+  function openBox(api) {
+    cur = api; lbPaint();
+    if (box.showModal) box.showModal(); else window.open(lbImg.src);
+  }
+  document.getElementById("lb-close").addEventListener("click", function () { box.close(); });
+
+  /* ---- Work: Read more / Read less ---- */
+  document.querySelectorAll(".track").forEach(function (track) {
+    var panel = track.querySelector(".cs");
+    if (!panel) return;
+    var toggles = track.querySelectorAll(".more-toggle");
+    function set(open, fromBottom) {
+      panel.classList.toggle("open", open);
+      toggles.forEach(function (b) { b.setAttribute("aria-expanded", open ? "true" : "false"); });
+      panel.querySelectorAll("video").forEach(function (v) { if (!open) v.pause(); });
+      if (!open && fromBottom) track.scrollIntoView({ behavior: "auto", block: "start" });
+      if (open) watchVideos(panel);
+    }
+    toggles.forEach(function (b) {
+      b.addEventListener("click", function () { set(!panel.classList.contains("open"), b.hasAttribute("data-less")); });
+    });
+  });
+
+  /* Looping animations inside case studies play only while on screen */
+  var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var vio = ("IntersectionObserver" in window) ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      var v = e.target;
+      if (e.isIntersecting && !calm) { v.preload = "auto"; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+      else v.pause();
+    });
+  }, { threshold: 0.4 }) : null;
+  function watchVideos(panel) {
+    panel.querySelectorAll(".cg-video video").forEach(function (v) {
+      if (v.dataset.watched) return; v.dataset.watched = "1";
+      if (vio) vio.observe(v); else if (!calm) v.play();
+    });
+  }
+
+  /* Case-study images open full size in the image viewer, with arrows within each figure */
+  document.querySelectorAll(".cs-media").forEach(function (fig) {
+    var items = Array.prototype.slice.call(fig.querySelectorAll(".cg-item:not(.cg-video)"));
+    if (!items.length) return;
+    var imgs = items.map(function (b) { return b.querySelector("img"); });
+    var i = 0;
+    var api = { slides: imgs, get: function () { return i; }, go: function (n) { i = n; }, show: fig };
+    items.forEach(function (b, n) { b.addEventListener("click", function () { i = n; openBox(api); }); });
+  });
+
+  /* ---- Video viewer: plays muted, arrows move through the set, close returns to the collage ---- */
+  var vbox = document.getElementById("vbox"), vbVideo = document.getElementById("vb-video"), vbCap = document.getElementById("vb-cap"), vbMissing = document.getElementById("vb-missing");
+  var vbStage = vbox.querySelector(".lb-stage"), vbPrev = chevron("prev", "Previous video"), vbNext = chevron("next", "Next video"), vlist = [], vi = 0;
+  vbStage.appendChild(vbPrev); vbStage.appendChild(vbNext);
+  function vbPaint() {
+    var it = vlist[vi];
+    vbMissing.hidden = true; vbVideo.hidden = false;
+    vbVideo.poster = it.poster || ""; vbVideo.src = it.src; vbVideo.muted = true;
+    var p = vbVideo.play(); if (p && p.catch) p.catch(function () {});
+    vbCap.textContent = it.cap + (vlist.length > 1 ? "  \u00b7  " + (vi + 1) + " / " + vlist.length : "");
+    vbPrev.hidden = vi === 0; vbNext.hidden = vi === vlist.length - 1;
+  }
+  vbVideo.addEventListener("error", function () { vbVideo.hidden = true; vbMissing.hidden = false; });
+  function vbGo(d) { var n = vi + d; if (n < 0 || n >= vlist.length) return; vi = n; vbPaint(); }
+  vbPrev.addEventListener("click", function (e) { e.stopPropagation(); vbGo(-1); });
+  vbNext.addEventListener("click", function (e) { e.stopPropagation(); vbGo(1); });
+  vbox.addEventListener("keydown", function (e) { if (e.key === "ArrowLeft") vbGo(-1); if (e.key === "ArrowRight") vbGo(1); });
+  function openVideos(list, n) {
+    vlist = list; vi = n; vbPaint();
+    if (vbox.showModal) vbox.showModal(); else window.open(list[n].src);
+  }
+  function closeVideos() { vbox.close(); }
+  vbox.addEventListener("close", function () { vbVideo.pause(); vbVideo.removeAttribute("src"); vbVideo.load(); });
+  document.getElementById("vb-close").addEventListener("click", closeVideos);
+  vbox.addEventListener("click", function (e) { if (e.target === vbox) closeVideos(); });
+
+  /* Future of Learning collage */
+  var tiles = Array.prototype.slice.call(document.querySelectorAll(".vtile"));
+  var tlist = tiles.map(function (t) { return { src: t.getAttribute("data-video"), cap: t.getAttribute("data-cap"), poster: t.querySelector("img").getAttribute("src") }; });
+  tiles.forEach(function (t, n) { t.addEventListener("click", function () { openVideos(tlist, n); }); });
+  /* Animations in case studies open larger on their own */
+  document.querySelectorAll(".cg-video").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var fig = b.closest(".cs-media");
+      openVideos([{ src: b.getAttribute("data-video"), cap: fig.querySelector(".txt").textContent, poster: b.querySelector("video").getAttribute("poster") }], 0);
+    });
+  });
+
+  box.addEventListener("click", function (e) { if (e.target === box) box.close(); });
+})();
+</script>
+</body>
+</html>
